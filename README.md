@@ -157,8 +157,15 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 Add Calico CNI
 ```bash
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.2/manifests/tigera-operator.yaml
+```
+```bash
 wget https://raw.githubusercontent.com/projectcalico/calico/v3.27.2/manifests/custom-resources.yaml
-vi custom-resources.yaml  # Edit the CIDR for pods if it's a custom CIDR: 10.10.0.0/16
+```
+# Edit the CIDR for pods if it's a custom CIDR: 10.10.0.0/16
+```bash
+vi custom-resources.yaml  
+```
+```bash
 kubectl apply -f custom-resources.yaml
 ```
 
