@@ -161,7 +161,7 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.2
 ```bash
 wget https://raw.githubusercontent.com/projectcalico/calico/v3.27.2/manifests/custom-resources.yaml
 ```
-# Edit the CIDR for pods if it's a custom CIDR: 10.10.0.0/16
+Edit the CIDR for pods if it's a custom CIDR: 10.10.0.0/16
 ```bash
 vi custom-resources.yaml  
 ```
