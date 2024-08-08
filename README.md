@@ -1,4 +1,4 @@
-# Kubernetes installation usigin kudeadm on Ubuntu 24.04 LTS   6.8.0-1010-azure 
+# Kubernetes installation and initalizing cluster using kudeadm on Ubuntu 24.04 LTS   6.8.0-1010-azure 
 
 # UBUNTU SERVER LTS  - https://ubuntu.com/download/server
 
@@ -9,8 +9,9 @@
 # CALICO CNI 3.27.2         - https://docs.tigera.io/calico/3.27/getting-started/kubernetes/quickstart
 *********************************************************************************************************************************
 **# 2 NODES, x64 Standard D2s v3 (2 vcpus, 8 GiB memory) EACH
-# k8s-control   98.70.79.195
-# k8s-1         20.235.246.223**
+**below are my IP address you can replace it with yours
+**# k8s-control   98.70.79.195
+**# k8s-1         20.235.246.223
 
 # Steps: 
 ```bash
