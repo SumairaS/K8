@@ -151,8 +151,8 @@ kubectl label node vm-sumaira-k8node1 node-role.kubernetes.io/worker=worker
 ```
 
 **ONLY ON WORKER nodes**
+
 Run the join command from the output of the above step
 ```bash
 # Command from kubeadm token create output
-```
 ```
