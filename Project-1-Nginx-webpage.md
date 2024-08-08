@@ -1,5 +1,5 @@
 # cat index.html
-bash 
+
 ```
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@ bash
 </html>
 ```
 # cat deployment.yml
-bash ```
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,10 +38,12 @@ spec:
       volumes:
       - name: html-volume
         configMap:
-          name: nginx-html-config 
-    ```
+          name: nginx-html-config
+```
+
 # cat service.yml
-bash ```
+
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -58,7 +60,7 @@ spec:
     
 # cat configmap.yaml
 
-Bash ```
+```
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -74,10 +76,10 @@ data:
         <h1>Hello from Nginx!</h1>
     </body>
     </html>
-    ```
+```
 
 *********************************************************************************************************************************************************8
-**# configmap.yaml  deployment.yml  index.html  service.yml
+**# configmap.yaml  deployment.yml  index.html  service.yml **
 # so now we have Kubernetes manifests for a deployment setup in the nginx-html directory. If you want to apply these manifests to set up an NGINX deployment, follow these # # steps:**
 1. Apply the Manifests
 kubectl apply -f configmap.yaml
