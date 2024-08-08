@@ -7,10 +7,10 @@
 # RUNC 1.1.12		- https://github.com/opencontainers/runc/releases
 # CNI PLUGINS 1.4.0	- https://github.com/containernetworking/plugins/releases
 # CALICO CNI 3.27.2         - https://docs.tigera.io/calico/3.27/getting-started/kubernetes/quickstart
-
-# 2 NODES, x64 Standard D2s v3 (2 vcpus, 8 GiB memory) EACH
+*********************************************************************************************************************************
+**# 2 NODES, x64 Standard D2s v3 (2 vcpus, 8 GiB memory) EACH
 # k8s-control   98.70.79.195
-# k8s-1         20.235.246.223
+# k8s-1         20.235.246.223**
 
 # Steps: 
 ```bash
