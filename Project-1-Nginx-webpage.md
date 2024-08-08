@@ -79,8 +79,10 @@ data:
 ```
 
 *********************************************************************************************************************************************************8
-**# configmap.yaml  deployment.yml  index.html  service.yml **
-# so now we have Kubernetes manifests for a deployment setup in the nginx-html directory. If you want to apply these manifests to set up an NGINX deployment, follow these # # steps:**
+# configmap.yaml  deployment.yml  index.html  service.yml save them 
+# so now we have Kubernetes manifests for a deployment setup in the nginx-html directory. If you want to apply these manifests to set up an NGINX deployment, follow these
+# # steps:
+
 # 1. Apply the Manifests
 ```
 kubectl apply -f configmap.yaml
