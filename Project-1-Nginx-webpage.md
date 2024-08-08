@@ -39,8 +39,7 @@ spec:
       - name: html-volume
         configMap:
           name: nginx-html-config 
-          ```
-
+    ```
 # cat service.yml
 bash ```
 apiVersion: v1
@@ -55,7 +54,7 @@ spec:
     nodePort: 30000  # Optional, specify a port between 30000-32767
   selector:
     app: nginx
-       ```
+```
     
 # cat configmap.yaml
 
