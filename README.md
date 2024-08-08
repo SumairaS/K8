@@ -1,18 +1,18 @@
-# K8
-Kubernetes installation usigin kudeadm on Ubuntu 24.04 LTS   6.8.0-1010-azure 
+# Kubernetes installation usigin kudeadm on Ubuntu 24.04 LTS   6.8.0-1010-azure 
 
-UBUNTU SERVER LTS  - https://ubuntu.com/download/server
-KUBERNETES 1.30.0	- https://kubernetes.io/releases/
-CONTAINERD 1.7.13 	- https://containerd.io/releases/
-RUNC 1.1.12		- https://github.com/opencontainers/runc/releases
-CNI PLUGINS 1.4.0	- https://github.com/containernetworking/plugins/releases
-CALICO CNI 3.27.2         - https://docs.tigera.io/calico/3.27/getting-started/kubernetes/quickstart
+# UBUNTU SERVER LTS  - https://ubuntu.com/download/server
 
-2 NODES, x64 Standard D2s v3 (2 vcpus, 8 GiB memory) EACH
-k8s-control   98.70.79.195
-k8s-1         20.235.246.223
+# KUBERNETES 1.30.0	- https://kubernetes.io/releases/
+# CONTAINERD 1.7.13 	- https://containerd.io/releases/
+# RUNC 1.1.12		- https://github.com/opencontainers/runc/releases
+# CNI PLUGINS 1.4.0	- https://github.com/containernetworking/plugins/releases
+# CALICO CNI 3.27.2         - https://docs.tigera.io/calico/3.27/getting-started/kubernetes/quickstart
 
-Steps: 
+# 2 NODES, x64 Standard D2s v3 (2 vcpus, 8 GiB memory) EACH
+# k8s-control   98.70.79.195
+# k8s-1         20.235.246.223
+
+# Steps: 
 ```bash
 sudo su
 printf "\n 98.70.79.195 k8s-control\20.235.246.223 k8s-1\n \n" >> /etc/hosts
@@ -48,7 +48,7 @@ vi /etc/containerd/config.toml
 
 systemctl restart containerd
 
-swapoff -a  <<<<<<<< just disable it in /etc/fstab instead ie. #swap.img
+swapoff -a  # <<<<<<<< just disable it in /etc/fstab instead ie. add a line #swap.img
 
 apt-get update
 
@@ -75,10 +75,14 @@ apt-mark hold kubelet kubeadm kubectl
 
 # check swap config, ensure swap is 0
 free -m
+
 # Verifying Installed Versions
 kubelet --version
+
 #******* ONLY on the Master Node *************
+
 # control plane install:
+
 kubeadm init --pod-network-cidr 10.10.0.0/16 --kubernetes-version 1.30.0 --node-name k8s-control --ignore-preflight-errors=all
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
@@ -91,18 +95,15 @@ kubectl apply -f custom-resources.yaml
 
 # get worker node commands to run to join additional nodes into cluster
 kubeadm token create --print-join-command
+
 # kubectl label node k8s-
 kubectl label node vm-sumaira-k8node1 node-role.kubernetes.io/worker=worker
 
 ### ONLY ON WORKER nodes
-Run the command from the token create output above
-
-Master node: 
+Run the command from the token create output above Master node 
  
 
  # Kubernetes Commands
 
 To get detailed information about your pods, use the following command:
-
-```bash
 kubectl get pods -o wide
