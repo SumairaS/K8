@@ -81,18 +81,32 @@ data:
 *********************************************************************************************************************************************************8
 **# configmap.yaml  deployment.yml  index.html  service.yml **
 # so now we have Kubernetes manifests for a deployment setup in the nginx-html directory. If you want to apply these manifests to set up an NGINX deployment, follow these # # steps:**
-1. Apply the Manifests
+# 1. Apply the Manifests
+```
 kubectl apply -f configmap.yaml
-2. Apply the Deployment:
+```
+# 2. Apply the Deployment:
+```
 kubectl apply -f deployment.yml
-Apply the Service:
+```
+# Apply the Service:
+```
 kubectl apply -f service.yml
-3. Verify the Deployment
+```
+# 3. Verify the Deployment
+```
 kubectl get pods
-4. Check Services:
+```
+# 4. Check Services:
+```
 kubectl get services
-5. Check ConfigMaps:
+```
+# 5. Check ConfigMaps:
+```
 kubectl get configmaps
-6. Inspect the Logs (if necessary):
+```
+# 6. Inspect the Logs (if necessary):
+```
 kubectl logs <pod-name>
-This will deploy your NGINX application according to the configurations in your manifests. If you encounter any issues or need further customization, let me know!
+```
+# This will deploy your NGINX application according to the configurations in your manifests. If you encounter any issues or need further customization, let me know!
