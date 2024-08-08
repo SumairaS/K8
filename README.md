@@ -35,36 +35,58 @@ modprobe br_netfilter
 Configure sysctl settings
 ```bash
 printf "net.bridge.bridge-nf-call-iptables = 1\nnet.ipv4.ip_forward = 1\nnet.bridge.bridge-nf-call-ip6tables = 1\n" >> /etc/sysctl.d/99-kubernetes-cri.conf
+```
+```bash
 sysctl --system
 ```
 
 Download and install containerd
 ```bash
 wget https://github.com/containerd/containerd/releases/download/v1.7.13/containerd-1.7.13-linux-amd64.tar.gz -P /tmp/
+```
+```bash
 tar Cxzvf /usr/local /tmp/containerd-1.7.13-linux-amd64.tar.gz
+```
+```bash
 wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service -P /etc/systemd/system/
+```
+```bash
 systemctl daemon-reload
+```
+```bash
 systemctl enable --now containerd
 ```
 
 Download and install runc
 ```bash
 wget https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64 -P /tmp/
+```
+```bash
 install -m 755 /tmp/runc.amd64 /usr/local/sbin/runc
 ```
 
 Download and install CNI plugins
 ```bash
 wget https://github.com/containernetworking/plugins/releases/download/v1.4.0/cni-plugins-linux-amd64-v1.4.0.tgz -P /tmp/
+```
+```bash
 mkdir -p /opt/cni/bin
+```
+```bash
 tar Cxzvf /opt/cni/bin /tmp/cni-plugins-linux-amd64-v1.4.0.tgz
 ```
 
 Configure containerd
 ```bash
 mkdir -p /etc/containerd
+```
+```bash
 containerd config default | tee /etc/containerd/config.toml   # Manually edit and change SystemdCgroup to true (not systemd_cgroup)
+```
+```bash
 vi /etc/containerd/config.toml
+```
+```bash
 systemctl restart containerd
 ```
 
