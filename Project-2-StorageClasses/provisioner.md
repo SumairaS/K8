@@ -5,39 +5,33 @@ In-Tree Provisioners
 
 These are provisioners built into Kubernetes and are specific to certain cloud providers or storage types.
 Examples:
-```
 kubernetes.io/aws-ebs: For provisioning Amazon Elastic Block Store (EBS) volumes.
 kubernetes.io/gce-pd: For provisioning Google Compute Engine Persistent Disks.
 kubernetes.io/azure-disk: For provisioning Azure Disks.
 kubernetes.io/cinder: For provisioning OpenStack Cinder volumes.
-```
+
 Note: In-tree provisioners are being gradually phased out in favor of CSI drivers (out-of-tree provisioners).
 
 Container Storage Interface (CSI) Provisioners
 
 CSI is a standard that allows third-party storage providers to develop their own plugins (drivers) that work with Kubernetes. CSI drivers are "out-of-tree," meaning they are not part of the core Kubernetes codebase.
 Examples:
-```bash
 csi-driver.example.com: Placeholder for any CSI driver. Real examples include:
 pd.csi.storage.gke.io: Google Persistent Disk CSI driver.
 ebs.csi.aws.com: Amazon EBS CSI driver.
 disk.csi.azure.com: Azure Disk CSI driver.
 cephfs.csi.ceph.com: CephFS CSI driver.
 nfs.csi.k8s.io: NFS CSI driver.
-```
+
 
 Flexibility: CSI drivers offer more flexibility and extensibility, allowing various storage providers to integrate their solutions with Kubernetes without modifying Kubernetes itself.
 
 External Provisioners
 These are custom provisioners that might be developed by users or third parties to handle specific storage types or custom environments.
-
 Examples:
 example.com/my-provisioner: Placeholder for a custom provisioner specific to a user's environment or needs.
 
 Example of a StorageClass with Different Provisioners
-
-yaml
-'''bash
 # Amazon EBS (In-Tree Provisioner)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -46,9 +40,7 @@ metadata:
 provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
-```
-  
-'''bash
+
 # CSI Driver (Out-of-Tree Provisioner)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -57,8 +49,7 @@ metadata:
 provisioner: pd.csi.storage.gke.io
 parameters:
   type: pd-standard
-  
-'''bash
+
 # Custom Provisioner
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -67,7 +58,7 @@ metadata:
 provisioner: example.com/custom-provisioner
 parameters:
   type: fast
-```
+
   
 How It Works
 When a PVC is created that references a StorageClass, Kubernetes uses the provisioner specified in the StorageClass to create the corresponding PV.
