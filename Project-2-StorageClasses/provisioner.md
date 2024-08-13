@@ -35,9 +35,9 @@ Examples:
 example.com/my-provisioner: Placeholder for a custom provisioner specific to a user's environment or needs.
 
 Example of a StorageClass with Different Provisioners
-bash'''
+
 yaml
-Copy code
+bash'''
 # Amazon EBS (In-Tree Provisioner)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -46,7 +46,8 @@ metadata:
 provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
-
+  
+bash'''
 # CSI Driver (Out-of-Tree Provisioner)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -55,7 +56,8 @@ metadata:
 provisioner: pd.csi.storage.gke.io
 parameters:
   type: pd-standard
-
+  
+bash'''
 # Custom Provisioner
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -64,8 +66,8 @@ metadata:
 provisioner: example.com/custom-provisioner
 parameters:
   type: fast
-```
 
+  
 How It Works
 When a PVC is created that references a StorageClass, Kubernetes uses the provisioner specified in the StorageClass to create the corresponding PV.
 The provisioner handles all interactions with the underlying storage system, including volume creation, deletion, and attaching/detaching the volume to/from Pods.
