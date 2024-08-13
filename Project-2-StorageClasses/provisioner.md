@@ -17,7 +17,7 @@ Container Storage Interface (CSI) Provisioners
 
 CSI is a standard that allows third-party storage providers to develop their own plugins (drivers) that work with Kubernetes. CSI drivers are "out-of-tree," meaning they are not part of the core Kubernetes codebase.
 Examples:
-```
+```bash
 csi-driver.example.com: Placeholder for any CSI driver. Real examples include:
 pd.csi.storage.gke.io: Google Persistent Disk CSI driver.
 ebs.csi.aws.com: Amazon EBS CSI driver.
@@ -37,7 +37,7 @@ example.com/my-provisioner: Placeholder for a custom provisioner specific to a u
 Example of a StorageClass with Different Provisioners
 
 yaml
-bash'''
+'''bash
 # Amazon EBS (In-Tree Provisioner)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -46,8 +46,9 @@ metadata:
 provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
+```
   
-bash'''
+'''bash
 # CSI Driver (Out-of-Tree Provisioner)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -57,7 +58,7 @@ provisioner: pd.csi.storage.gke.io
 parameters:
   type: pd-standard
   
-bash'''
+'''bash
 # Custom Provisioner
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -66,7 +67,7 @@ metadata:
 provisioner: example.com/custom-provisioner
 parameters:
   type: fast
-
+```
   
 How It Works
 When a PVC is created that references a StorageClass, Kubernetes uses the provisioner specified in the StorageClass to create the corresponding PV.
